@@ -8,6 +8,8 @@ import (
 
 const (
 	symSearch = "SYMBOL_SEARCH"
+
+	queryKeyword = "keywords"
 )
 
 type SearchSymResult struct {
@@ -22,7 +24,7 @@ type SearchSymResult struct {
 	MatchScore  string `json:"9. matchScore"`
 }
 
-func (c *Client) SearchSym(keyword string) ([]SearchSymResult, error) {
+func (c *Client) SearchSymbol(keyword string) ([]SearchSymResult, error) {
 	endpoint := c.buildRequestString(requestParams{
 		queryFunction: symSearch,
 		queryKeyword:  keyword,
@@ -38,11 +40,9 @@ func (c *Client) SearchSym(keyword string) ([]SearchSymResult, error) {
 		return nil, err
 	}
 
-	type searchSymData struct {
+	var res struct {
 		BestMatches []SearchSymResult `json:"bestMatches"`
 	}
-	var res searchSymData
-
 	err = json.Unmarshal(bodyBytes, &res)
 	if err != nil {
 		return nil, err

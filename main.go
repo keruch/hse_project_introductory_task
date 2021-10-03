@@ -9,13 +9,35 @@ const apiKey = "ZTQTVX829784GT8I"
 
 func main() {
 	client := av.NewClient(apiKey)
-	res, err := client.SearchSym("microsoft")
+
+	SearchSymbolExample(&client)
+	ExchangeRateExample(&client)
+	StockQuoteExample(&client)
+}
+
+func SearchSymbolExample(client *av.Client) {
+	res, err := client.SearchSymbol("microsoft")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	fmt.Printf("%+v\n", res)
+}
 
-	for _, val := range res {
-		fmt.Printf("%+v\n", val)
+func ExchangeRateExample(client *av.Client) {
+	res, err := client.ExchangeRate("BTC", "CNY")
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
+	fmt.Printf("%+v\n", res)
+}
+
+func StockQuoteExample(client *av.Client) {
+	res, err := client.StockQuote("AAPL")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("%+v\n", res)
 }

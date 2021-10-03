@@ -7,14 +7,9 @@ import (
 )
 
 const (
-	HostName = "www.alphavantage.co"
-)
-
-const (
+	hostName    = "www.alphavantage.co"
 	httpsScheme = "https"
-)
 
-const (
 	queryName       = "query"
 	queryAPI        = "apikey"
 	queryAdjusted   = "adjusted"
@@ -24,7 +19,6 @@ const (
 	queryCompact    = "compact"
 	queryJSON       = "json"
 	queryFunction   = "function"
-	queryKeyword    = "keywords"
 )
 
 type avConnection struct {
@@ -47,7 +41,7 @@ func NewConnection() Connection {
 	}
 	return &avConnection{
 		client: client,
-		host:   HostName,
+		host:   hostName,
 	}
 }
 
