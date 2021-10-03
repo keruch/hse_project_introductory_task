@@ -11,10 +11,12 @@ const (
 	httpsScheme = "https"
 
 	queryName       = "query"
+
 	queryAPI        = "apikey"
 	queryAdjusted   = "adjusted"
 	queryOutputSize = "outputsize"
 	queryDataType   = "datatype"
+
 	queryTrue       = "true"
 	queryCompact    = "compact"
 	queryJSON       = "json"

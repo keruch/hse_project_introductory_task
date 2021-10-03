@@ -1,1 +1,1 @@
-package docs
+Ouch! It's empty!
